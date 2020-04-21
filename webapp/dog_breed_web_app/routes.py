@@ -1,8 +1,10 @@
-from worldbankapp import app
+from dog_breed_web_app import app
 import json, plotly
 from flask import render_template , request
 import cv2
 import numpy as np
+import sys
+
 
 import keras
 from keras.applications.resnet50 import preprocess_input, decode_predictions
@@ -12,6 +14,8 @@ from keras.models import Sequential
 from keras.applications.resnet50 import ResNet50, preprocess_input,decode_predictions
 from keras import regularizers
 import tensorflow as tf
+import os
+
 
 
 
@@ -97,18 +101,12 @@ def index():
 @app.route('/upload',methods=["POST"])
 def upload():
     file = request.files["inputFile"]
-    
-    
-    file.save(file.filename)
-    
-    img = cv2.imread(file.filename)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-    #r= request
-    
-    #nparr = np.fromstring(r.data, np.uint8)
-    # decode image
-    #img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    str = predict_breed(file.filename)
+    img_path = os.path.join(os.path.abspath(os.getcwd()), 'dog_breed_web_app/static/img',file.filename)
+
+    file.save(img_path)
+
+
+    str = predict_breed(img_path)
     
-    return str
+    return render_template('upload.html', dog_breed = str, img_path="static/img/"+file.filename)
