@@ -19,9 +19,9 @@ Along with exploring state-of-the-art CNN models for classification, you will ma
 
 ## Project_Instructions
 ### Webapp_Instructions
-* cd webapp
-* run ```python dog_breed_app.py```
-* got to ```http://0.0.0.0:6006```
+1. cd webapp
+2. run ```python dog_breed_app.py```
+3. got to ```http://0.0.0.0:6006```
 
 ### Installation_Instructions
 
