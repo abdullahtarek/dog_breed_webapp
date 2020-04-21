@@ -22,6 +22,7 @@ Along with exploring state-of-the-art CNN models for classification, you will ma
 1. cd webapp
 2. run ```python dog_breed_app.py```
 3. got to ```http://0.0.0.0:6006```
+4. upload an image using the upload button and press submit
 
 ### Installation_Instructions
 
